@@ -31,7 +31,7 @@ const Statistics = ({ good,bad,neutral,total }) => {
       <Display text='good' value={good} />
       <Display text='neutral' value={neutral} />
       <Display text='bad' value={bad} />
-      <All total={total()} />
+      <All total={totalValue} />
       <Avg good={good} bad={bad} total={totalValue} />
       <Positive good={good} total={totalValue} />
     </div>
