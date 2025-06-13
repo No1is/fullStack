@@ -22,7 +22,7 @@ const App = () => {
     )
 
     if (nameExists) {
-      alert(trimmedName + " is already added to the phone book");
+      alert(`${trimmedName} is already added to the phonebook`);
     } else {
       setPersons(persons.concat(personObject));
     }
