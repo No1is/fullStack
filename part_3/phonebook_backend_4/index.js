@@ -25,7 +25,6 @@ let persons = [
     }
 ]
 
-const entries = persons.length
 
 app.use((req,res,next) => {
   req.requestStartTime = new Date()
@@ -38,7 +37,7 @@ app.get('/api/persons', (request,response) => {
 
 app.get('/info', (request,response) => {
   response.send(
-    `<div><p>Phonebook has info for ${entries} people<p></div>
+    `<div><p>Phonebook has info for ${persons.length} people<p></div>
     <div><p>${request.requestStartTime.toString()}<p></div>`
   )
 })
