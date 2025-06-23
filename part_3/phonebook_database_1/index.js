@@ -52,8 +52,9 @@ app.get('/api/persons', (request,response) => {
 })
 
 app.get('/info', (request,response) => {
+  const total = Person.estimatedDocumentCount()
   response.send(
-    `<div><p>Phonebook has info for ${persons.length} people<p></div>
+    `<div><p>Phonebook has info for ${total} people<p></div>
     <div><p>${request.requestStartTime.toString()}<p></div>`
   )
 })
