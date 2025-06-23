@@ -53,11 +53,12 @@ app.get('/api/persons', (request,response) => {
 })
 
 app.get('/info', (request,response) => {
-  const total = Person.estimatedDocumentCount()
-  response.send(
-    `<div><p>Phonebook has info for ${total} people<p></div>
-    <div><p>${request.requestStartTime.toString()}<p></div>`
-  )
+  Person.countDocuments().then(total => {
+    response.send(
+      `<div><p>Phonebook has info for ${total} people</p></div>
+      <div><p>${request.requestStartTime.toString()}</p></div>`
+    )
+  })
 })
 
 app.get('/api/persons/:id',(request,response) => {
@@ -67,15 +68,10 @@ app.get('/api/persons/:id',(request,response) => {
 })
 
 app.delete('/api/persons/:id',(request,response) => {
-  Person.deleteOne({id: request.params.id}, (error) => {
-    if (error) {
-      console.log(`no person found`)
+  Person.findByIdAndDelete(request.params.id)
+    .then(result => {
       response.status(204).end()
-    } else {
-      console.log(`person deleted successfully`)
-      response.status(204).end()
-    }
-  })
+    })
 })
 
 app.post('/api/persons',(request,response) => {
@@ -89,20 +85,23 @@ app.post('/api/persons',(request,response) => {
     return response.status(400).json({
       error: 'number is missing'
     })
-  } else if (Person.find({name:body.name})) {
-    return response.status(400).json({
-      error: 'name must be unique'
-    })
   }
-  
-  const person = new Person({
-    id : generateId(),
-    name: body.name,
-    number: body.number
-  })
-  person.save().then(savedPerson => {
-    response.json(savedPerson)
-  })
+
+  Person.findOne({name: body.name})
+    .then(existingPerson => {
+      if (existingPerson) {
+        return response.status(400).json({
+          error: 'name must be unique'
+        })
+      }
+      const person = new Person({
+        name: body.name,
+        number: body.number,
+      })
+      person.save().then(savedPerson => {
+        response.json(savedPerson)
+      })
+    })
 })
 
 const PORT = process.env.PORT
