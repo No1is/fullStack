@@ -36,6 +36,7 @@ morgan.token('body', req => {
   return JSON.stringify(req.body)
 })
 app.use(express.json())
+app.use(express.static('dist'))
 
 app.use((req,res,next) => {
   req.requestStartTime = new Date()
