@@ -1,0 +1,50 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "custom-hooks are awesome!"
+    },
+    {
+      "id": 2,
+      "content": "best feature ever <3"
+    },
+    {
+      "content": "i am the greatest coder alive!!!",
+      "id": 3
+    },
+    {
+      "content": "i am the greatest coder alive!!!",
+      "id": 4
+    },
+    {
+      "content": "zero bugs was here",
+      "id": 5
+    },
+    {
+      "content": "zero bugs made it",
+      "id": 6
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "mluukkai",
+      "number": "040-5483923"
+    },
+    {
+      "id": 2,
+      "name": "hellas",
+      "number": "012-123123"
+    },
+    {
+      "name": "zero bugs",
+      "number": "010-123123",
+      "id": 3
+    },
+    {
+      "name": "bugs this",
+      "number": "123-123-1234",
+      "id": 4
+    }
+  ]
+}
