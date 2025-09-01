@@ -1,0 +1,22 @@
+{
+  "name": "body-mass-index",
+  "version": "1.0.0",
+  "description": "9.1-body-mass-index",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ts-node": "ts-node",
+    "start": "ts-node-dev index.ts"
+  },
+  "author": "Sam Meir",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.9.2"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
